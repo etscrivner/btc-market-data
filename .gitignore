@@ -1,0 +1,10 @@
+# SQLite3
+*.db
+
+# Emacs
+*~
+\#*\#
+.ropeproject
+
+# Market data
+raw-price-data
