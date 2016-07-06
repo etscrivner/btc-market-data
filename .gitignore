@@ -1,9 +1,11 @@
 # SQLite3
 *.db
+*.db-journal
 
 # Emacs
 *~
 \#*\#
+.\#*
 .ropeproject
 
 # Market data
