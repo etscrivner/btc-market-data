@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/bash -e
 
 # List of all spreadsheets to be downloaded
 SPREADSHEETS=(
-  "coinbaseUSD.csv.gz"
-  "krakenUSD.csv.gz"
-  "localbtcUSD.csv.gz"
+    "coinbaseUSD.csv.gz"
+    "krakenUSD.csv.gz"
+    "1coinUSD.csv.gz"
+    "localbtcUSD.csv.gz"
 )
 
 # Remove the old spreadsheets

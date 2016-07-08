@@ -61,13 +61,15 @@ class Application(object):
             exchange_name = filename_to_exchange_name(file_name)
             with open(file_name, 'r') as historical_data:
                 data_reader = csv.reader(historical_data)
-                for row in data_reader:
+                for idx, row in enumerate(data_reader):
                     self.insert_row_into_database(row, exchange_name)
+                    if idx % 10000:
+                        self.db.commit()
 
     def insert_row_into_database(self, row, exchange_name):
         # Insert the row into the database
         query = '''
-        INSERT INTO historical_trades (
+        INSERT OR REPLACE INTO historical_trades (
           created_at, exchange_name, usd_price, btc_price
         ) VALUES(
           "{:%Y-%m-%d %H:%M:%S}",
@@ -82,7 +84,6 @@ class Application(object):
             decimal.Decimal(row[2])
         )
         self.db.execute(query)
-        self.db.commit()
 
 
 if __name__ == '__main__':
